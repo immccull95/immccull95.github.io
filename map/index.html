@@ -31,62 +31,6 @@
         </header>
     </div>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-<div id="map" style="width: 800px; height: 600px"></div>
+<h1>Welcome</h1>
 
-<script>
-  // create Leaflet map object and set view's center and zoom level
-  var map = L.map('map').setView([38, -115], 7);        
-
-  // add background map layer
-  var Esri_NatGeoWorldMap = L.tileLayer(
-    'http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}');
-  Esri_NatGeoWorldMap.addTo(map)
-// create tree marker
-var treeMarker = L.AwesomeMarkers.icon({
-  icon: 'tree',
-  prefix: 'fa',
-  markerColor: 'darkgreen',
-  iconColor: 'white'});
-
-// add geojson points with tree marker and popup
-var pts = new L.GeoJSON.AJAX('./pts_pinulong.geojson', {
-  pointToLayer: function (feature, latlng) {
-    return L.marker(latlng, {icon: treeMarker});
-  },
-  onEachFeature: function (feature, layer) {
-    layer.bindPopup(
-      "Collected by: <strong>" + feature.properties.collctr + "</strong><br><br>" +
-      "at: " + feature.properties.localty + "<br><br>" +
-      "for: " + feature.properties.instttn, { maxWidth: 200 });
-  }
-});
-pts.addTo(map)
-
-// add geojson polygons with a style
-var ply = new L.GeoJSON.AJAX('./ply_pinulong.geojson', {
-  "color": "#ff7800",
-  "weight": 5,
-  "opacity": 0.65 });
-ply.addTo(map)
-
-  
-  
-</script>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-    
-
-  </body>
-</html>
-
+Check out my <strong><a href='./map'>map of bristlecone 
